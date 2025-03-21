@@ -21,3 +21,26 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    menuToggle.addEventListener("click", function () {
+        navMenu.classList.toggle("open");
+        menuToggle.classList.toggle("open");
+    });
+
+    // Close menu when clicking a link (for smooth navigation)
+    document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+            navMenu.classList.remove("open");
+            menuToggle.classList.remove("open");
+        });
+    });
+
+    // Add 'scrolled' class to header when scrolling
+    window.addEventListener("scroll", function () {
+        const header = document.querySelector(".header");
+        header.classList.toggle("scrolled", window.scrollY > 50);
+    });
+});
