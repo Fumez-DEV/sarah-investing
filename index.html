@@ -267,9 +267,8 @@
       ליווי אישי שיבנה לך את הדרך הנכונה להצלחה. השאירי פרטים עכשיו – וגלי איך להפוך את הכסף שלך לנכס!
     </p>
 
-    <div class="cta-form-wrapper" x-data="{ submitted: false }" data-aos="fade-up" data-aos-delay="200">
-      <!-- Form -->
-      <form x-show="!submitted" @submit.prevent="submitted = true" name="cta-form" method="POST" data-netlify="true">
+    <div class="cta-form-wrapper" data-aos="fade-up" data-aos-delay="200">
+      <form id="cta-form">
         <div class="form-group">
           <label for="name">שם מלא</label>
           <input type="text" id="name" name="name" placeholder="הכניסי את שמך" required autocomplete="name">
@@ -283,16 +282,15 @@
         <button type="submit" class="primary-btn">לקבלת פגישת ייעוץ ללא עלות - לחצי כאן !</button>
       </form>
 
-      <!-- Success Message -->
-      <div x-show="submitted" x-transition.opacity.duration.300ms class="success-message">
-        <p>🚀 תודה! פרטייך התקבלו ונחזור אליך בהקדם!</p>
-      </div>
-    </div>
+<!-- Success Message -->
+<div id="success-message" class="success-message" style="display: none;">
+  <div class="success-icon">🚀</div>
+  <h3>פרטייך התקבלו בהצלחה!</h3>
+  <p>תודה רבה על האמון 🙏<br>אחזור אליך בקרוב מאוד לשיחת היכרות אישית 💬</p>
+</div>
+
   </div>
 </section>
-
-
-
 
 
 <!-- Footer -->
