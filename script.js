@@ -43,25 +43,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-  const form = document.getElementById('cta-form');
-  const successMessage = document.getElementById('success-message');
+const form = document.getElementById('cta-form');
+const successMessage = document.getElementById('success-message');
 
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const data = new FormData(form);
+form.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const data = new FormData(form);
 
-    const response = await fetch('https://formspree.io/f/xwpoaygg', {
-      method: 'POST',
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-
-    if (response.ok) {
-      form.style.display = 'none';
-      successMessage.style.display = 'block';
-    } else {
-      alert('אירעה שגיאה בשליחה. נסי שוב מאוחר יותר 🙁');
+  const response = await fetch('https://formspree.io/f/xwpoaygg', {
+    method: 'POST',
+    body: data,
+    headers: {
+      'Accept': 'application/json'
     }
   });
+
+  if (response.ok) {
+    form.style.display = 'none';
+    successMessage.style.display = 'block';
+
+    // Wait 7.5 seconds then refresh
+    setTimeout(() => {
+      location.reload();
+    }, 7500);
+  } else {
+    alert('אירעה שגיאה בשליחה. נסי שוב מאוחר יותר 🙁');
+  }
+});
